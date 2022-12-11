@@ -1,0 +1,12 @@
+
+*.suo
+*.ipch
+*.obj
+*.tlog
+*.exe
+*.pdb
+*.db
+*.opendb
+*.ilk
+*.idb
+*Scratch.log
