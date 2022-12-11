@@ -17,6 +17,14 @@
 
 class Advent_2022_10 {
 public:
+	static void Cycle();
 	static void Calculate();
+	static void PrintCRT();
+
+	static int cycleCount;
+	static int part1Sum;
+	static int registerX;
+
+	static char crt[];
 };
 

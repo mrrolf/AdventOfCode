@@ -82,6 +82,7 @@ void Utils::GetNextLine2(const char* input, int& pos, char* buff) {
 
 ///////////////////////////////////////////////////////////////////////////////
 void Utils::Tokenize(char* input, std::vector<std::string>& tokens) {
+	tokens.clear();
 	Tokenize(input, " ", tokens);
 }
 
