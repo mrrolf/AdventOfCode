@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Scratch.cpp" />
+    <ClCompile Include="AoC_2022_01.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_02.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_03.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_04.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_05.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_06.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_07.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_08.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_09.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2022_10.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
+    <ClCompile Include="AoC_2015.cpp">
+      <Filter>2015</Filter>
+    </ClCompile>
+    <ClCompile Include="MD5.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AoC_2022_01.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_02.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_03.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_04.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_05.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_06.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_07.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_08.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_09.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_10.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2015.h">
+      <Filter>2015</Filter>
+    </ClInclude>
+    <ClInclude Include="MD5.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="2022">
+      <UniqueIdentifier>{7f91e07a-c96c-40e0-86f6-7797e5be5469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2015">
+      <UniqueIdentifier>{f70554a8-cb55-4b61-b066-78cfc24e8008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{9d653aa9-5b8d-4c17-976d-96db33628712}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
