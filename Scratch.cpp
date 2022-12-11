@@ -1,6 +1,3 @@
-// Scratch.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <vector>
 #include <stdio.h>
@@ -18,6 +15,8 @@
 #include "MD5.h"
 
 
+#pragma region ColorDefinitions
+
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -26,14 +25,18 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+#pragma endregion
 
 
 class Utils
 {
 public:
 	static char* ReadInput(const char* fileName) {
+		std::string filePath = ".\\adventInput\\";
+		filePath.append(fileName);
+
 		FILE* fp = nullptr;
-		fopen_s(&fp, fileName, "rb");
+		fopen_s(&fp, filePath.c_str(), "rb");
 		if (fp == nullptr)
 			return nullptr;
 
@@ -85,6 +88,9 @@ public:
 
 		buff[i] = '\0';
 	}
+	static void Tokenize(char* input, std::vector<std::string>& tokens) {
+		Tokenize(input, " ", tokens);
+	}
 	static void Tokenize(char* input, const char* delim, std::vector<std::string>& tokens) {
 		char* context = nullptr;
 		char* token = strtok_s(input, delim, &context);
@@ -112,6 +118,11 @@ public:
 		number = (uint32_t)atoi(input + pos);
 		while (std::isdigit(input[pos]) && input[pos] != '\0') pos++;
 		return true;
+	}
+	static char PeekNextChar(const char* input, int pos) {
+		int peekPos = pos;
+		while (input[peekPos] != '\0' && IsSpaceChar(input[peekPos])) peekPos++;
+		return input[peekPos];
 	}
 };
 
@@ -1396,7 +1407,7 @@ public:
 
 	static void Calculate1()
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_05_1.txt");
+		const char* input = Utils::ReadInput("2015_05_1.txt");
 
 		int numOfGoodStrings = 0;
 		int pos = 0;
@@ -1412,7 +1423,7 @@ public:
 	}
 	static void Calculate2()
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_05_1.txt");
+		const char* input = Utils::ReadInput("2015_05_1.txt");
 		// const char* input = "qjhvhtzxzqqjkmpb\nxxyxx\nuurcxstgmygtbstg\nieodomkazucvgmuy";
 
 		int numOfGoodStrings = 0;
@@ -1483,7 +1494,7 @@ public:
 
 	static void Calculate1()
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_06.txt");
+		const char* input = Utils::ReadInput("2015_06.txt");
 
 		int pos = 0;
 		size_t len = strlen(input);
@@ -1664,7 +1675,7 @@ public:
 	}
 
 	static void Calculate1() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_07.txt");
+		const char* input = Utils::ReadInput("2015_07.txt");
 		size_t len = strlen(input);
 		
 		std::map<std::string, WireOp> opMap;
@@ -1733,7 +1744,7 @@ public:
 	}
 
 	static void Calculate() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_08.txt");
+		const char* input = Utils::ReadInput("2015_08.txt");
 
 		size_t len = strlen(input);
 		int pos = 0;
@@ -1775,7 +1786,7 @@ public:
 	}
 
 	static void BuildMap(GraphMap& graph) {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_09.txt");
+		const char* input = Utils::ReadInput("2015_09.txt");
 		size_t len = strlen(input);
 		int pos = 0;
 		while (pos < len)
@@ -2000,7 +2011,7 @@ public:
 	static int sRedCount;
 
 	static void Calculate1() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_012.txt");
+		const char* input = Utils::ReadInput("2015_012.txt");
 
 		size_t len = strlen(input);
 		int sum = 0;
@@ -2087,7 +2098,7 @@ public:
 	}
 
 	static void Calculate2() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_012.txt");
+		const char* input = Utils::ReadInput("2015_012.txt");
 
 		int len = (int)strlen(input);
 		int pos = 0;
@@ -2120,7 +2131,7 @@ public:
 
 	static void PopulateMap(SeatingMap& map)
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_013.txt");
+		const char* input = Utils::ReadInput("2015_013.txt");
 		
 		size_t len = strlen(input);
 		int pos = 0;
@@ -2231,7 +2242,7 @@ public:
 	typedef std::vector<int> PointList;
 
 	static void PopulateData(DeerData& data) {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_014.txt");
+		const char* input = Utils::ReadInput("2015_014.txt");
 
 		size_t len = strlen(input);
 		int pos = 0;
@@ -2483,7 +2494,7 @@ public:
 
 	static void Populate(InfoList& list)
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_016.txt");
+		const char* input = Utils::ReadInput("2015_016.txt");
 
 		size_t len = strlen(input);
 		int pos = 0;
@@ -2555,7 +2566,7 @@ public:
 	}
 
 	static void Populate(ContainerList& list) {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_017.txt");
+		const char* input = Utils::ReadInput("2015_017.txt");
 
 		size_t len = strlen(input);
 		int pos = 0;
@@ -2749,9 +2760,9 @@ public:
 	static void Populate(Grid& g, bool test) {
 		const char* input = nullptr;
 		if (test)
-			input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_018_test.txt");
+			input = Utils::ReadInput("2015_018_test.txt");
 		else
-			input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_018.txt");
+			input = Utils::ReadInput("2015_018.txt");
 
 		size_t len = strlen(input);
 		char temp[1024];
@@ -2876,7 +2887,7 @@ public:
 	}
 
 	static void PopulateMap(CMap& cmap) {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_19_2.txt");
+		const char* input = Utils::ReadInput("2015_19_2.txt");
 
 		size_t len = strlen(input);
 		int pos = 0;
@@ -2926,7 +2937,7 @@ public:
 	}
 
 	static void Calculate() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_19_1.txt");
+		const char* input = Utils::ReadInput("2015_19_1.txt");
 
 		std::unordered_set<std::string> results;
 
@@ -3735,7 +3746,7 @@ public:
 	}
 
 	static void ReadInput() {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_23.txt");
+		const char* input = Utils::ReadInput("2015_23.txt");
 		int len = (int)strlen(input);
 		int pos = 0;
 		while (pos < len) {
@@ -3816,7 +3827,7 @@ public:
 
 	static void ParseInput() {
 		InitList list;
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2015_24.txt");
+		const char* input = Utils::ReadInput("2015_24.txt");
 		int pos = 0;
 		int len = (int)strlen(input);
 		while (pos < len) {
@@ -4233,7 +4244,7 @@ public:
 	}
 
 	static void Calculate()	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2022_01.txt");
+		const char* input = Utils::ReadInput("2022_01.txt");
 
 		int len = (int)strlen(input);
 		int pos = 0;
@@ -4266,7 +4277,7 @@ class Advent_2022_02 {
 public:
 	static void Calculate()
 	{
-const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2022_02.txt");
+const char* input = Utils::ReadInput("2022_02.txt");
 int len = (int)strlen(input);
 int pos = 0, score1 = 0, score2 = 0;
 constexpr int diff = 'X' - 'A';
@@ -4354,7 +4365,7 @@ public:
 
 	static void Calculate()
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2022_03.txt");
+		const char* input = Utils::ReadInput("2022_03.txt");
 
 		printf("Advent_2022_03   %d     %d\n", Part1(input), Part2(input) );
 	}
@@ -4364,7 +4375,7 @@ class Advent_2022_04 {
 public:
 	static void Calculate()
 	{
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2022_04.txt");
+		const char* input = Utils::ReadInput("2022_04.txt");
 		int len = (int)strlen(input);
 		int pos = 0;
 		int count1 = 0;
@@ -4473,7 +4484,7 @@ public:
 	}
 
 	static void PopulateMoves(Moves& moves) {
-		const char* input = Utils::ReadInput("C:\\dev\\Scratch\\adventInput\\2022_05.txt");
+		const char* input = Utils::ReadInput("2022_05.txt");
 		int len = (int)strlen(input);
 		int pos = 0;
 
@@ -4489,7 +4500,7 @@ public:
 			char buff[256];
 			Utils::GetNextLine2(input, pos, buff);
 			std::vector<std::string> tokens;
-			Utils::Tokenize(buff, " ", tokens);
+			Utils::Tokenize(buff, tokens);
 
 			MoveData m;
 			m.num = atoi(tokens[1].c_str());
@@ -4543,6 +4554,369 @@ public:
 };
 bool Advent_2022_05::sPart2 = false;
 
+class Advent_2022_06 {
+public:
+	static bool ValidWindow(const char* input, int windowSize) {
+		for (int i = 0; i < windowSize - 1; i++) {
+			for (int j = i + 1; j < windowSize; j++) {
+				if (input[i] == input[j]) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	static void Calculate() {
+		const char* input = Utils::ReadInput("2022_06.txt");
+		int len = (int)strlen(input);
+		int part2 = false;
+		int windowSize = part2 ? 4 : 14;
+		int pos = 0;
+
+		int start = -1;
+		while ((pos + windowSize) < len) {
+			if (ValidWindow(input + pos, windowSize)) {
+				start = pos + windowSize;
+				break;
+			}
+			else {
+				pos++;
+			}
+		}
+
+		printf("Advent_2022_06   %d\n", start);
+	}
+};
+
+class Advent_2022_07 {
+public:
+
+	class Directory {
+	public:
+		Directory(const std::string& n, Directory* p) : directSize(0), indirectSize(0), name(n), parent(p) {}
+		void AddFile(const std::string& fileName, size_t size) {
+			directSize += size;
+		}
+		void AddTryDir(const std::string& newName, Directory* parent) {
+			auto iter = children.find(newName);
+			// already exists
+			if (iter != children.end())
+				return;
+
+			Directory* newChild = new Directory(newName, parent);
+			children.insert(std::make_pair(newName, newChild));
+		}
+		Directory* GetChild(const std::string& dirName) {
+			auto iter = children.find(dirName);
+			return iter->second;
+		}
+		size_t CalculateIndirectSize() {
+			indirectSize = directSize;
+			for (auto c : children)
+				indirectSize += c.second->CalculateIndirectSize();
+			return indirectSize;
+		}
+
+		size_t directSize;
+		size_t indirectSize;
+		Directory* parent;
+		std::map<std::string,Directory*> children;
+		std::string name;
+	};
+
+	static Directory* rootDir;
+	static Directory* cwd;
+
+	static void PopulateDirs() {
+		const char* input = Utils::ReadInput("2022_07.txt");
+		int len = (int)strlen(input);
+		int pos = 0;
+
+		char buff[128];
+		while (pos < len) {
+			Utils::GetNextLine(input, pos, buff);
+			std::vector<std::string> tokens;
+			Utils::Tokenize(buff, tokens);
+
+			if (tokens[1] == "cd")
+			{
+				std::string& newDirName = tokens[2];
+				if (newDirName == "/") {
+					cwd = rootDir;
+				}
+				else if (newDirName == "..") {
+					cwd = cwd->parent;
+				}
+				else {
+					Directory* newDir = cwd->GetChild(newDirName);
+					cwd = newDir;
+				}
+			}
+			if (tokens[1] == "ls") {
+				// need to peak at the next line
+				char peekChar = Utils::PeekNextChar(input, pos);
+				while (peekChar != '$' && pos < len )
+				{
+					Utils::GetNextLine(input, pos, buff);
+					std::vector<std::string> tokens;
+					Utils::Tokenize(buff, tokens);
+
+					if (tokens[0] == "dir") {
+						cwd->AddTryDir(tokens[1], cwd);
+					}
+					else {
+						size_t fileSize = atoi(tokens[0].c_str());
+						cwd->AddFile(tokens[1], fileSize);
+					}
+					peekChar = Utils::PeekNextChar(input, pos);
+				}
+			}
+		}
+	}
+	static size_t SumAtMost(Directory* dir, size_t maxSize) {
+		size_t total = 0;
+		if (dir->indirectSize <= maxSize)
+			total += dir->indirectSize;
+
+		for (auto c : dir->children) {
+			total += SumAtMost(c.second, maxSize);
+		}
+
+		return total;
+	}
+	static size_t FindClosestTo(Directory* dir, size_t desiredSize) {
+		if (dir->indirectSize < desiredSize)
+			return 0;
+
+		size_t bestSize = dir->indirectSize;
+		for (auto c : dir->children) {
+			size_t s = FindClosestTo(c.second, desiredSize);
+			if (s >= desiredSize)
+				bestSize = std::min(bestSize, s);
+		}
+		return bestSize;
+	}
+
+	static void Calculate() {
+		rootDir = new Directory("/", nullptr);
+		cwd = rootDir;
+		
+		PopulateDirs();
+		cwd = rootDir;
+		rootDir->CalculateIndirectSize();
+
+		size_t part1 = SumAtMost(rootDir, 100000);
+
+		size_t currFreeSpace = 70000000 - rootDir->indirectSize;
+		size_t requiredSize = 30000000 - currFreeSpace;
+		size_t part2 = FindClosestTo(rootDir, requiredSize);
+
+		printf("Advent_2022_07    %zu     %zu\n", part1, part2);
+	}
+};
+Advent_2022_07::Directory* Advent_2022_07::rootDir = nullptr;
+Advent_2022_07::Directory* Advent_2022_07::cwd = nullptr;
+
+class Advent_2022_08 {
+public:
+
+	class Grid {
+	public:
+		Grid(const char* fileName) {
+			const char* input = Utils::ReadInput("2022_08.txt");
+			int len = (int)strlen(input);
+			int pos = 0;
+			while (pos < len) {
+				char buff[512];
+				Utils::GetNextLine(input, pos, buff);
+				SizeX = (int)strlen(buff);
+				data.push_back(std::string(buff));
+			}
+			SizeY = (int)data.size();
+		}
+		int Get(int x, int y) {
+			return data[y][x] - '0';
+		}
+		int GetIncreasingCount(int startX, int startY, int dX, int dY) {
+			int x = startX;
+			int y = startY;
+
+
+			int count = 0;
+			int curr = -1;
+
+			while (x >= 0 && y >= 0 && x < SizeX && y < SizeY) {
+				int d = Get(x, y);
+				if (d > curr) {
+					curr = d;
+					count++;
+					visible.insert(std::make_pair(x, y));
+				}
+				x += dX;
+				y += dY;
+			}
+			return count;
+		}
+		int GetSeeCount(int startX, int startY, int dX, int dY) {
+			int count = 0;
+			int curr = -1;
+			int startingHeight = Get(startX, startY);
+			int x = startX + dX;
+			int y = startY + dY;
+			while (x >= 0 && y >= 0 && x < SizeX && y < SizeY) {
+				int d = Get(x, y);
+				count++;
+
+				if (d >= startingHeight)
+					break;
+				x += dX;
+				y += dY;
+			}
+			return count;
+		}
+		int GetBestScore() {
+
+			int bestScore = 0;
+			for (int x = 0; x < SizeX; x++) {
+				for (int y = 0; y < SizeX; y++) {
+
+					if (x == 2 && y == 3)
+						printf("debug");
+
+					int score = GetSeeCount(x, y, 1, 0);
+					score *= GetSeeCount(x, y, -1, 0);
+					score *= GetSeeCount(x, y, 0, 1);
+					score *= GetSeeCount(x, y, 0, -1);
+
+					bestScore = std::max(score, bestScore);
+				}
+			}
+
+			return bestScore;
+		}
+
+		int SizeX;
+		int SizeY;
+		std::vector<std::string> data;
+		std::set<std::pair<int, int>> visible;
+	};
+
+
+	static void Calculate() {
+		Grid grid("2022_08.txt");
+
+		for (int i = 0; i < grid.SizeX; i++) {
+			grid.GetIncreasingCount(i, 0, 0, 1);
+			grid.GetIncreasingCount(i, grid.SizeY-1, 0, -1);
+		}
+		for (int i = 0; i < grid.SizeY; i++) {
+			grid.GetIncreasingCount(0, i, 1, 0);
+			grid.GetIncreasingCount(grid.SizeX-1, i, -1, 0);
+		}
+
+		int answer = (int)grid.visible.size();
+		int bestScore = grid.GetBestScore();
+		printf("Advent_2022_08    %d    %d", answer, bestScore);
+	}
+};
+
+class Advent_2022_09 {
+public:
+
+	struct IntPos{
+		int x;
+		int y;
+	};
+	struct Rope {
+		static constexpr const int NumKnots = 10;
+		IntPos knots[NumKnots];
+		Rope() {
+			for (int i = 0; i < NumKnots; i++) {
+				knots[i].x = 0;
+				knots[i].y = 0;
+			}
+		}
+		void MarkTail() {
+			visted.insert(std::make_pair(knots[NumKnots-1].x, knots[NumKnots - 1].y));
+		}
+		int KnotAtPos(int x, int y) {
+			for (int i = 0; i < NumKnots; i++) {
+				if (knots[i].x == x && knots[i].y == y)
+					return i;
+			}
+			return -1;
+		}
+	};
+	typedef std::set<std::pair<int, int>> VisitedGrid;
+	static VisitedGrid visted;
+
+	static void UpdateRope(int dX, int dY, Rope& rope) {
+		rope.knots[0].x += dX;
+		rope.knots[0].y += dY;
+
+		for (int i = 0; i < rope.NumKnots - 1; i++) {
+			IntPos& headPos = rope.knots[i];
+			IntPos& tailPos = rope.knots[i+1];
+
+			int deltaX = headPos.x - tailPos.x;
+			int deltaY = headPos.y - tailPos.y;
+
+			if (abs(deltaX) > 1) {
+				tailPos.x += deltaX > 0 ? 1 : -1;
+				tailPos.y += deltaY == 0 ? 0 : deltaY > 0 ? 1 : -1;
+			}
+			else if (abs(deltaY) > 1) {
+				tailPos.x += deltaX == 0 ? 0 : deltaX > 0 ? 1 : -1;
+				tailPos.y += deltaY > 0 ? 1 : -1;
+			}
+		}
+
+		rope.MarkTail();
+	}
+
+	static void DoMove(char direction, int steps, Rope& rope) {
+		int dX = 0;
+		int dY = 0;
+		switch (direction) {
+			case 'U': dY = 1;  break;
+			case 'D': dY = -1; break;
+			case 'L': dX = -1;  break;
+			case 'R': dX = 1; break;
+		}
+
+		while (steps-- > 0) {
+			UpdateRope(dX, dY, rope);
+		}
+	}
+
+	static void Calculate() {
+		const char* input = Utils::ReadInput("2022_09.txt");
+		int len = (int)strlen(input);
+		int pos = 0;
+
+		Rope rope;
+		rope.MarkTail();
+
+		while (pos < len) {
+			char buff[32];
+			Utils::GetNextLine(input, pos, buff);
+
+			DoMove(buff[0], atoi(buff + 1), rope);
+		}
+		printf("Advent_2022_09   %zu\n", visted.size());
+	}
+};
+Advent_2022_09::VisitedGrid Advent_2022_09::visted;
+
+
+class Advent_2022_10 {
+public:
+	static void Calculate() {
+
+	}
+};
+
 int main()
 {
 #pragma region 2015
@@ -4582,7 +4956,12 @@ int main()
 	//Advent_2022_02::Calculate();
 	//Advent_2022_03::Calculate();
 	//Advent_2022_04::Calculate();
-	Advent_2022_05::Calculate();
+	//Advent_2022_05::Calculate();
+	//Advent_2022_06::Calculate();
+	//Advent_2022_07::Calculate();
+	//Advent_2022_08::Calculate();
+	//Advent_2022_09::Calculate();
+	Advent_2022_10::Calculate();
 
 	return 0;
 }
