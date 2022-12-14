@@ -139,6 +139,7 @@
     <ClCompile Include="AoC_2022_09.cpp" />
     <ClCompile Include="AoC_2022_10.cpp" />
     <ClCompile Include="AoC_2022_11.cpp" />
+    <ClCompile Include="AoC_2022_12.cpp" />
     <ClCompile Include="MD5.cpp" />
     <ClCompile Include="Scratch.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="AoC_2022_09.h" />
     <ClInclude Include="AoC_2022_10.h" />
     <ClInclude Include="AoC_2022_11.h" />
+    <ClInclude Include="AoC_2022_12.h" />
     <ClInclude Include="MD5.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

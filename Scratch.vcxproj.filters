@@ -44,6 +44,9 @@
     <ClCompile Include="AoC_2022_11.cpp">
       <Filter>2022</Filter>
     </ClCompile>
+    <ClCompile Include="AoC_2022_12.cpp">
+      <Filter>2022</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AoC_2022_01.h">
@@ -86,6 +89,9 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="AoC_2022_11.h">
+      <Filter>2022</Filter>
+    </ClInclude>
+    <ClInclude Include="AoC_2022_12.h">
       <Filter>2022</Filter>
     </ClInclude>
   </ItemGroup>

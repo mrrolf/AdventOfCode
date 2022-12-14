@@ -30,6 +30,52 @@
 #pragma endregion
 
 
+class GraphNodeBase
+{
+public:
+
+	void AddConnection( GraphNodeBase*  node, float cost );
+
+	std::vector<GraphNodeBase*> connections;
+	std::vector<float>	costs;
+	mutable const GraphNodeBase* pathNode = nullptr;
+};
+
+template<class T>
+class GraphNode : public GraphNodeBase {
+public:
+	T val;
+
+	GraphNode() {}
+	GraphNode( T v ) {
+		val = v;
+	}
+};
+
+
+class GraphPath {
+public:
+
+	typedef bool( IsEndFn )( const GraphNodeBase* );
+
+	GraphPath() :cost( 0.0f ) {}
+
+	void AddNode( const GraphNodeBase*  node );
+	void Finalize();
+
+	float cost;
+	std::vector<const GraphNodeBase*> nodes;
+};
+
+class Graph
+{
+public:
+	Graph() {}
+
+	std::vector<GraphNodeBase*> nodes;
+};
+
+
 class Utils
 {
 public:
@@ -44,4 +90,7 @@ public:
 	static int GetNextBoolAndAdvance(const char* input, int& pos);
 	static bool GetNextUint(const char* input, int& pos, uint32_t& number);
 	static char PeekNextChar(const char* input, int pos);
+	static GraphPath FindShortestPath( Graph* graph, GraphNodeBase* start, GraphPath::IsEndFn* fn = nullptr);
 };
+
+
