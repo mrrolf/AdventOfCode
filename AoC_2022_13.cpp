@@ -102,15 +102,6 @@ int Advent_2022_13::Compare( const Advent_2022_13::Clump* c1, const Advent_2022_
 	}
 }
 
-struct ClumpComparer
-{
-	inline bool operator() ( const Advent_2022_13::Clump*& c1, const Advent_2022_13::Clump*& c2 )
-	{
-		int val = Advent_2022_13::Compare( c1, c2 );
-		return ( val > 0 );
-	}
-};
-
 void Advent_2022_13::Print( const Advent_2022_13::Clump* c, bool root ) {
 	printf( "[" );
 
@@ -176,8 +167,14 @@ int Advent_2022_13::Part2( const char *input ) {
 	marker2->marker = true;
 	clumps.push_back( marker2 );
 
-	sort( clumps.begin(), clumps.end(), ClumpComparer() );
+	// sort the clumps
+	sort( clumps.begin(), clumps.end(),
+		[]( const Clump*& c1, const Clump*& c2 ) -> bool
+		{
+			return Compare( c1, c2 ) > 0;
+		} );
 
+	// Find the index of the markers
 	int pos1 = -1;
 	int pos2 = -1;
 	for( int i = 0; i < clumps.size(); i++ )
