@@ -27,6 +27,7 @@
 #include "AoC_2022_10.h"
 #include "AoC_2022_11.h"
 #include "AoC_2022_12.h"
+#include "AoC_2022_13.h"
 
 int main()
 {
@@ -42,7 +43,8 @@ int main()
 	//Advent_2022_09::Calculate();
 	//Advent_2022_10::Calculate();
 	//Advent_2022_11::Calculate();
-	Advent_2022_12::Calculate();
+	//Advent_2022_12::Calculate();
+	Advent_2022_13::Calculate();
 
 	return 0;
 }

@@ -167,14 +167,10 @@ GraphPath Utils::FindShortestPath( Graph* graph, GraphNodeBase* start, GraphPath
 	multimap<float, const GraphNodeBase*> notVisited;
 	unordered_map<const GraphNodeBase*, float> notVisitedLookup;
 	unordered_map<const GraphNodeBase*, const GraphNodeBase*> pathToNode;
-	//for( const GraphNodeBase* node : graph->nodes ) {
-	//	distToNode.insert( make_pair( node, FLT_MAX ) );
-	//}
 	const GraphNodeBase* currNode = start;
 
 	pathToNode.insert( make_pair( currNode, nullptr ) );
 
-	//distToNode[currNode] = 0.0f;
 	float currCost = 0.0f;
 
 	while( true )
@@ -214,8 +210,6 @@ GraphPath Utils::FindShortestPath( Graph* graph, GraphNodeBase* start, GraphPath
 					notVisitedLookup[possibleNode] = newCost;
 				}
 			}
-			//if( newCost > distToNode[possibleNode] )
-			//	continue;
 		}
 
 		// we've exhausted our options, no path
@@ -228,13 +222,12 @@ GraphPath Utils::FindShortestPath( Graph* graph, GraphNodeBase* start, GraphPath
 		float bestNextNodeCost = notVisited.begin()->first;
 		notVisited.erase( notVisited.begin() );
 
-		//notVisitedLookup.erase( notVisitedLookup.find( bestNextNode ) );
-
 		currNode = bestNextNode;
 		currCost = bestNextNodeCost;
 
 
 		// we're done!
+		// rebuild path
 		if( endFn( bestNextNode ) ) {
 			GraphPath path;
 			path.cost = currCost;
@@ -254,9 +247,6 @@ GraphPath Utils::FindShortestPath( Graph* graph, GraphNodeBase* start, GraphPath
 
 		}
 	}
-
-	// now to backward through the nodes to get the path
-
 
 	// not sure what happened
 	return GraphPath();
